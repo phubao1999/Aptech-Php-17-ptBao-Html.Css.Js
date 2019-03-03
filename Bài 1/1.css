@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 80px!important;
+    display: block;
+    text-transform: uppercase;
+    margin-top: 30px!important;
+}
+
+.avatar img{
+    width: 400px;
+    height: 300px;
+    margin-left: 50px;
+}
+.thongtincanhan{
+    background-color: grey;
+    border-top: 3px solid violet;
+    border-bottom: 3px solid violet;
+}
+.thongtin h4{
+    line-height: 50px;
+    color: wheat;
+    font-weight: bold;
+    font-style: italic;
+}
+.anhgiadinh img{
+    width: 400px;
+    height: 300px;
+}
+.anhgiadinh p{
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.anhbanbe img{
+    width: 400px;
+    height: 300px;
+}
+.anhbanbe p{
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.end {
+    background-color: grey;
+}
+.end a{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.end p{
+    font-weight: bold;
+    color: white;
+}

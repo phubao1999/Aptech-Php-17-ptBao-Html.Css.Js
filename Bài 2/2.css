@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.dad{
+    display: flex;
+}
+.child1{
+    background: red;
+    width: 70%;
+    height: 200px;
+}
+.child2{
+    background-color: blue;
+    width: 30%;
+    height: 200px;
+}
+a{
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    padding-top: 100px;
+    text-transform: uppercase;
+}
+.child3{
+    background-color: red;
+    width: 50%;
+    height: 200px;
+}
+.child4{
+    background-color: blue;
+    width: 50%;
+    height: 200px;
+}
+.child5{
+    background-color: red;
+    width: 30%;
+    height: 200px;
+}
+.child6{
+    background-color: blue;
+    width: 70%;
+    height: 200px;
+}
