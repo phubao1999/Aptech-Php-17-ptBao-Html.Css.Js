@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<body>
+    <h1 id="a"></h1>
+    <script>
+        function loadData(){
+            var http = new XMLHttpRequest();
+            http.onreadystatechange = function () {
+                if (http.readyState === 4 ) {
+                    document.getElementById('a').innerHTML = JSON.parse(http.responseText).name;
+                    var h2 = document.createElement('h2');
+                    h2.appendChild(document.createTextNode(JSON.parse(http.responseText).age));
+                    document.body.appendChild(h2);
+                }
+            }
+            http.open('GET', './data.json');
+            http.send();
+        }
+        loadData();
+    </script>    
+    <button onclick="loadData()">Bấm Vào Có dữ liệu</button>
+</body>    
+
+</head>
+
+</html>
