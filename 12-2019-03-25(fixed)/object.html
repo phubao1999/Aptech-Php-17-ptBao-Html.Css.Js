@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+
+  <body>
+    <table>
+      <thead>
+        <th>#</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Made In</th>
+        <th>Made By</th>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <script>
+      var products = [
+        {
+          iphone: {
+            name: 'iPhone X',
+            price: 899,
+            made: {
+              in: 'China',
+              by: 'California'
+            },
+            camera: [1.3, 10],
+            discount: null,
+            typeDiscount: null
+          }
+        },
+        {
+          samsung: {
+            name: 'Samsung 10+',
+            price: 699,
+            made: {
+              in: 'Vietnam',
+              by: 'Korea'
+            },
+            camera: [1.3, 20, 10, 15],
+            discount: 10,
+            typeDiscount: 'percent'
+          }
+        }
+      ];
+      var tableBody = document.getElementById('tableBody');
+      for (var i = 0; i < products.length; i++) {
+        var tr = document.createElement('tr');
+        var th = document.createElement('th');
+        var valueTh = document.createTextNode(i + 1);
+        th.appendChild(valueTh);
+        tr.appendChild(th);
+        var arrayKey = Object.keys(products[i]);
+        var td = document.createElement('td');
+        var valueTd = document.createTextNode(products[i][arrayKey[0]].name);
+        td.appendChild(valueTd);
+        tr.appendChild(td);
+        var td = document.createElement('td');
+        var valueTd = document.createTextNode(products[i][arrayKey[0]].price);
+        td.appendChild(valueTd);
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      }
+      var productsObject = {
+        iphone: {
+          name: 'iPhone X',
+          price: 899,
+          made: {
+            in: 'China',
+            by: 'California'
+          },
+          camera: [1.3, 10],
+          discount: null,
+          typeDiscount: null
+        },
+        samsung: {
+          name: 'Samsung 10+',
+          price: 699,
+          made: {
+            in: 'Vietnam',
+            by: 'Korea'
+          },
+          camera: [1.3, 20, 10, 15],
+          discount: 10,
+          typeDiscount: 'percent'
+        }
+      };
+      var array = Object.keys(productsObject);
+      for (var i = 0; i < array.length; i++) {
+        console.log(productsObject[array[i]].name);
+      }
+      // var trSS = document.createElement('tr');
+      // var thSS = document.createElement('th');
+      // var valueThSS = document.createTextNode(products[1].samsung.name);
+      // thSS.appendChild(valueThSS);
+      // var tdSS = document.createElement('td');
+      // var valueTdSS = document.createTextNode(products[1].samsung.price);
+      // tdSS.appendChild(valueTdSS);
+      // trSS.appendChild(thSS);
+      // trSS.appendChild(tdSS);
+      // tableBody.appendChild(trSS);
+    </script>
+  </body>
+</html>

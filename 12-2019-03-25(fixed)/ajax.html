@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+  <h1 id="a"></h1>
+  <script>
+    function loadData() {
+      var http = new XMLHttpRequest();
+      http.open('GET', './data.json');
+      http.send();
+      http.onreadystatechange = function () {
+        if (http.readyState === 4) {
+          document.getElementById('a').innerHTML = JSON.parse(http.responseText).name;
+          var h2 = document.createElement('h2');
+          h2.appendChild(document.createTextNode(JSON.parse(http.responseText).age));
+          document.body.appendChild(h2);
+        }
+      }
+    }
+    loadData();
+  </script>
+</body>
+
+</html>
