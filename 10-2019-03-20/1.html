@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="Js/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="1.css">
+    <script src="1.js"></script>
+</head>
+<body>
+   <div class="dangky">
+       <img src="img/dangky.jpg" alt="">
+       <button class="nutso1">Đăng Nhập</button>
+   </div>
+   <div class="dangnhap">
+       <img src="img/dangnhap.jpg" alt="">
+       <button class="nutso2">Đăng Ký</button>
+   </div>
+   <!--Hết VD Về Animate JQuery-->
+    <div class="khoigiua" style="text-align:left">
+        <button onclick="batden()">Turn on the light</button>
+        <img src="https://www.w3schools.com/js/pic_bulboff.gif" alt="bong-den-tat" id="bong-den">
+        <button onclick="tatden()">Turn off the light</button> <br>
+        <button onclick="battat()" style="margin-top:20px;">On/Off</button>
+        <script>
+            var imageElement = document.getElementById('bong-den');
+            function batden(){
+                imageElement.src = 'https://www.w3schools.com/js/pic_bulbon.gif';
+            }
+            function tatden(){
+                imageElement.src = 'https://www.w3schools.com/js/pic_bulboff.gif'; 
+            }
+            function battat(){
+                if (imageElement.src == 'https://www.w3schools.com/js/pic_bulboff.gif') {
+                    imageElement.src = 'https://www.w3schools.com/js/pic_bulbon.gif'
+                    console.log('Bóng Đèn đã bật')
+                }else{
+                    imageElement.src = 'https://www.w3schools.com/js/pic_bulboff.gif'
+                    console.log('Bóng Đèn đã tắt')
+                }
+            }
+        </script>
+    </div>    <!--JS Thay Đổi Dữ Liệu HTML--> <br>
+    <div class="khoinhap">
+        <p>Hãy Nhập Vào Ô Có Giá Trị Từ 5 Đến 10</p>
+        <input type="text" id="demo">
+        <button type="button" onclick="myFunction()">Xác Nhận</button>
+        <p id="p01"></p>
+        <script>
+            function myFunction(){
+                var message, x;
+                message = document.getElementById('p01');
+                message.innerHTML = '';
+                x = document.getElementById('demo').value;
+                try {
+                    if(x == '') throw ''+'Chưa Nhập';
+                    if(isNaN(x)) throw 'Chưa Đúng';
+                    x = Number(x);
+                    if(x<5) throw 'Quá Thấp';
+                    if(x>10) throw 'Quá Lớn';
+                }
+                catch(err) {
+                    message.innerHTML = 'Giá Trị' + err;
+                }
+            }
+        </script>
+    </div>   <!--JS Errors-->   <br>
+<!-- //Scope In JS 
+    Scope in JS have 2 Type Is Local scope and Global scope 
+When Var declared(Khai Báo) Inside a function, Becomes Local 
+When Var declared(Khai Báo) Outside a function, Becomes Global -->
+</body>
+</html>

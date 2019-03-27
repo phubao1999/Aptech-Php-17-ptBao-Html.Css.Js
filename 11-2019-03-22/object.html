@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+  <script>
+    var nam = {
+      "name": 'Nam',
+      "age": 18,
+      "address": 'Danang'
+    };
+    var names = {
+      "nam": {
+        "age": 18,
+        "address": 'Danang',
+        "fullName": 'Nguyen Hai Nam',
+        "website": 'namcoi.com'
+      },
+      "tich": {
+        "address": 'Danang'
+      }
+    };
+    var products = [{
+        'iphone': { // products.iphone || products['iphone']
+          "name": 'iPhone X',
+          "price": 899,
+          "made": {
+            "in": 'China',
+            "by": 'California'
+          },
+          "camera": [],
+          "discount": null,
+          "typeDiscount": null
+        }
+      },
+      {
+        'samsung': {
+          "name": 'Samsung 10+',
+          "price": 899,
+          "made": {
+            "in": 'Vietnam',
+            "by": 'Korea'
+          },
+          "camera": [1.3, 20, 10, 15],
+          "discount": 10,
+          "typeDiscount": 'percent'
+        }
+      },
+      {
+        'totalPrice': 1788
+      }
+    ];
+    var a = Object.keys(products);
+    // a = ['iphone','samsung'];
+    for (var i = 0; i < a.length; i++) {
+      console.log(products[a[i]]);
+    }
+    // for (var i = 0; i < products.length; i++) {
+    //   console.log(i);
+    // }
+    // var h1 = document.createElement("h1");
+    // h1.appendChild(document.createTextNode(products['iphone'].made.by));
+    // document.body.appendChild(h1);
+    // console.log(names);
+  </script>
+
+</body>
+
+</html> 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap.css">
+</head>
+<body>
+        <button onclick="loadUsers()">Get Users</button>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>password</th>
+              <th>created_at</th>
+              <th>updated_at</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+          </tbody>
+        </table>
+        <script>
+          function loadUsers() {
+            var http = new XMLHttpRequest();
+            http.open('GET', './users.json');
+            http.send();
+            http.onreadystatechange = function () {
+              if (http.readyState === 4 && http.status === 200) {
+                var rawData = http.responseText;
+                var data = JSON.parse(rawData);
+                var tableBody = document.getElementById('tableBody');
+                for (var i = 0; i < data.users.length; i++) {
+                  var tr = document.createElement('tr');
+                  var th = document.createElement('th');
+                  var thData = document.createTextNode(i + 1);
+                  th.appendChild(thData);
+                  tr.appendChild(th);
+                  var td = document.createElement('td');
+                  var tdData = document.createTextNode(data.users[i].name);
+                  td.appendChild(tdData);
+                  tr.appendChild(td);
+                  var td = document.createElement('td');
+                  var tdData = document.createTextNode(data.users[i].email);
+                  td.appendChild(tdData);
+                  tr.appendChild(td);
+                  tableBody.appendChild(tr);
+                  var td = document.createElement('td');
+                  var tdData = document.createTextNode(data.users[i].password);
+                  td.appendChild(tdData);
+                  tr.appendChild(td);
+                }
+              }
+            }
+          }
+        </script>
+</body>
+</html>

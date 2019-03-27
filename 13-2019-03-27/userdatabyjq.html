@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap.css">
+</head>
+<body>
+    <button id="getUser" class="btn-primary">Get User By Click</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+    <script src="jquery/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            //console.log('Duoc Chua You');
+            $('#getUser').click(function(){
+                //console.log('Gui Data ve chua');
+                $.get('./users.json', function (data, status){
+                    if (status === 'success') {
+                        for (var i = 0; i < data.users.length; i++){
+                            var tr = '<tr id="tr-' + i + '"></tr>';
+                            var th = '<th>' + (i + 1) + '</th>';
+                            var tdName = '<td>' + data.users[i].name + '</td>';
+                            var tdEmail = '<td>' + data.users[i].email + '</td>';
+                            $('#tableBody').append(tr);
+                            $('#tr-' + i).append(th);
+                            $('#tr-' + i).append(tdName);
+                            $('#tr-' + i).append(tdEmail);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
