@@ -1,39 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/bootstrap.css">
+    <style>
+        .cardImage {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+    </style>
 </head>
+
 <body>
-    <button id="getPost" class="btn-outline-dark">Click Here To See Post</button>
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>    
+    <div id="post-container"class="container"></div>
     <script src="jquery/jquery-3.3.1.js"></script>
     <script>
-        $(document).ready(function () {
-           // console.log('Duoc Chua');
-           $('#getPost').click(function(){
-              //console.log('Gui Post Ve Chua');
-              $.get('./post.json', function (data, status){
-                if (status === 'success') {
-                    for (var i = 0; i < data.post.length; i++){
-                        var img = data.users[i].image_url + '<br/>';
-                        var h5 = data.users[i].title + '<br/>';
-                        var p = data.users[i].description + '<br/>'
+        var post = document.getElementById('post-container');
+        function loadPost(){
+            http = new XMLHttpRequest();
+            http.onreadystatechange = function(){
+                if(this.readyState === 4){
+                    var data = JSON.parse(this.responseText);
+                    // console.log(data[1].title);
+                    for(var i = 0; i < data.length; i++){
+                        var card = document.createElement('div');//card
+                        card.className = 'card my-3';
+                        
+                        var row = document.createElement('div');//row
+                        row.className = 'row';
+                        var cardBody = document.createElement('div');
+                        cardBody.className = 'col-7 ml-5 mr-4 card-body';
+                        // add categories
+                        var cat = document.createElement('h6');
+                        if (typeof data[i].categories[0] === 'undefined'){
+                            var catText = document.createTextNode('Category: Other');
+                                }else{
+                                    var catText = document.createTextNode('Category: '+data[i].categories[0].name);
+                                };
+                        
+                        //console.log(data[i].categories[1].name);
+                        cat.appendChild(catText);
+                        cardBody.appendChild(cat);
+                        //add title
+                        var title = document.createElement('h4');
+                        var titleText = document.createTextNode(data[i].title);
+                        title.appendChild(titleText);
+                        cardBody.appendChild(title);
+                        //add date
+                        var postDate = document.createElement('p');
+                        postDate.className = 'text-muted';
+                        var dateText = document.createTextNode(data[i].created_at);
+                        postDate.appendChild(dateText);
+                        cardBody.appendChild(postDate);
+                        //add content
+                        var cardContent = document.createElement('p');
+                        cardContent.className ='card-text';
+                        var cardText = document.createTextNode(data[i].description);
+                        cardContent.appendChild(cardText);
+                        cardBody.appendChild(cardContent);
+                        // add link
+                        var cardLink = document.createElement('a');
+                        cardLink.className ='card-link';
+                        cardLink.setAttribute('href','#');
+                        var cardText = document.createTextNode('Continue reading');
+                        cardLink.appendChild(cardText);
+                        cardBody.appendChild(cardLink);
+                        //add card body into row
+                        row.appendChild(cardBody);
+                        
+                        
+                        //add image
+                        var cardImg = document.createElement('div');
+                        cardImg.className = 'col-4 my-1 cardImage';
+                        cardImg.setAttribute('id', ('image-'+(i+1)) );
+                        row.appendChild(cardImg);
+                        card.appendChild(row);
+                        post.appendChild(card);
+                        document.getElementById('image-'+(i+1)).style.backgroundImage = 'url('+data[i].image_url+')';
                     }
                 }
-              });
-           });
-        });
+            }
+            http.open("GET","./post.json",false);
+            http.send();
+        }
+        loadPost();
     </script>
 </body>
+
 </html>
