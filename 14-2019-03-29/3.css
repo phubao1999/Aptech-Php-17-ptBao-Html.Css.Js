@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ol.carousel-indicators.cacnut {
+    top: 0px;
+    width: 30px;
+    margin: 0px;
+    padding: 0px;
+    left: 0px;
+}
+.text1 {
+    text-align: left;
+}
+.text2 {
+    text-align: center;
+}
+.text3 {
+    text-align: right;
+}
+.row .giua{
+    text-align: center;
+}
